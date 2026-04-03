@@ -20,7 +20,7 @@
 | **Docstring Archaeology** | Read class/method docstrings for documented design rationale | `class AgentS3(UIAgent): """Agent that uses no hierarchy for less inference time"""` — direct cost admission |
 | **Token Budget Reconstruction** | Reconstruct per-call token costs from pricing constants in code | Found `0.0050/1000` (input) and `0.0150/1000` (output) in `manager.py` — GPT-4o pricing confirms design era |
 
-**Evidence Chain**: `manager.py` → `cost = input_tokens * (0.0050/1000) + ...` → `planner_info["goal_plan_cost"]` → `agent_s3.py:49: """no hierarchy for less inference time"""`.
+**Evidence Chain**: `https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s1/core/Manager.py` → `cost = input_tokens * (0.0050/1000) + ...` → `planner_info["goal_plan_cost"]` → `https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s1/core/AgentS.py:49: """no hierarchy for less inference time"""`.
 
 ---
 
@@ -39,7 +39,7 @@ This is not "billing telemetry" — it's **an empirical signal that shaped the s
 
 ## 🔹 Phase 3: Component Analysis
 
-**File**: `gui_agents/s2/agents/manager.py` — `_generate_step_by_step_plan` (L210–218)
+**File**: `https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s2/agents/manager.py` — `_generate_step_by_step_plan` (L210–218)
 ```python
 input_tokens, output_tokens = calculate_tokens(self.generator_agent.messages)
 cost = input_tokens * (0.0050 / 1000) + output_tokens * (0.0150 / 1000)
@@ -52,7 +52,7 @@ planner_info = {
 }
 ```
 
-**File**: `gui_agents/s2/agents/worker.py` — (L215–218)
+**File**: `https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s2/agents/worker.py` — (L215–218)
 ```python
 input_tokens, output_tokens = calculate_tokens(self.generator_agent.messages)
 cost = input_tokens * (0.0050 / 1000) + output_tokens * (0.0150 / 1000)
@@ -60,7 +60,7 @@ self.cost_this_turn += cost
 logger.info("EXECTUOR COST: %s", self.cost_this_turn)
 ```
 
-**File**: `gui_agents/s3/core/engine.py` — Azure cost tracking (L309–310)
+**File**: `https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s3/core/engine.py` — Azure cost tracking (L309–310)
 ```python
 total_tokens = completion.usage.total_tokens
 self.cost += 0.02 * ((total_tokens + 500) / 1000)
