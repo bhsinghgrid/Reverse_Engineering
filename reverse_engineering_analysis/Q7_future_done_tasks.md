@@ -128,6 +128,41 @@ Turn 2: Worker executing "Search Flights"
 
 ---
 
+## 🧩 CLAIM: Shared Prompt Memory (Blackboard-like)
+Agent-S achieves coordination between the hierarchical `Manager` and the executing `Worker` via a **Shared Prompt Memory** mechanism, where global task context is injected into the Worker's system prompt at the start of each subtask.
+
+### 🔬 EVIDENCE
+1.  **State Injection at Turn 0**
+    *   `Worker.generate_next_action` ([Worker.py:L150-157](https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s1/core/Worker.py#L150-157)
+    *   At the start of a subtask (`turn_count == 0`), the `Worker` performs a string replacement on its system prompt template.
+2.  **Global Context Placeholders**
+    *   `FUTURE_TASKS`: Injected via `, ".join([f.name for f in future_tasks])` ([L155](https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s1/core/Worker.py#L155)).
+    *   `DONE_TASKS`: Injected via `",".join(d.name for d in done_task)` ([L156](https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s1/core/Worker.py#L156)).
+3.  **Instruction Propagation**
+    *   The overall `TASK_DESCRIPTION` and specific `SUBTASK_DESCRIPTION` are similarly injected to constrain the worker's operational scope ([L152-154](https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s1/core/Worker.py#L152-154)).
+
+### 🧠 INFERENCE
+The system leverages the LLM's context window as a dynamic "Blackboard." Since the `Worker` is stateless between subtasks, this injection ensures it understands what has already been accomplished (avoiding redundant actions) and what remains (preventing premature execution of dependency-heavy steps). This design minimizes inter-agent coupling: the `Worker` doesn't need to know the `Manager's` logic, only its string-based instructions.
+
+---
+
+## 🧪 Counterfactual Reasoning & Alternative Designs
+
+### Why not direct Agent-to-Agent Messaging?
+Direct communication (e.g., via a message broker or shared DB) would require the `Worker` to maintain a persistent state machine.
+*   **Agent-S Advantage**: By re-injecting the global state at the start of every subtask, the `Worker` can be instantiated fresh, making the system highly resilient to individual subtask failures or process restarts.
+
+### Why not pass the entire DAG to the Worker?
+Passing the full Directed Acyclic Graph (DAG) would consume significant tokens and potentially confuse the `Worker` with irrelevant branch information.
+*   **Design Choice**: Pruning the state into simple `DONE` and `FUTURE` lists minimizes token usage while providing sufficient "steering" for the `Worker` to stay within its bounds.
+
+---
+
+## 📊 Confidence Level
+**High** — The template-based string replacement is the primary mechanism for state transfer in `gui_agents/s1/core/Worker.py`.
+
+---
+
 ## ✅ Phase 7: Proof of Correctness
 
 - **Code Evidence**: `FUTURE_TASKS` and `DONE_TASKS` are template placeholders in `PROCEDURAL_MEMORY` — no custom logic is needed by the Worker itself
