@@ -40,7 +40,7 @@ Procedural memory provides stable behavioral rails (the rules of engagement). Ep
 
 ## 🔹 Phase 3: Component Analysis
 
-**Procedural Memory** (`procedural_memory.py:14–123`):
+**Procedural Memory** (`https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s1/core/ProceduralMemory.py:14–123`):
 ```python
 @staticmethod
 def construct_simple_worker_procedural_memory(agent_class, skipped_actions):
@@ -57,7 +57,7 @@ def construct_simple_worker_procedural_memory(agent_class, skipped_actions):
 - Uses Python `inspect` module to extract real function signatures from the deployed `OSWorldACI` class
 - Result: The model only knows about actions that physically exist at runtime — no hallucinated API calls
 
-**Episodic Memory** (`knowledge.py:262–282`):
+**Episodic Memory** (`https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s1/core/Knowledge.py:262–282`):
 ```python
 def save_episodic_memory(self, subtask_key: str, subtask_traj: str) -> None:
     """Save episodic memory (subtask level knowledge)."""
