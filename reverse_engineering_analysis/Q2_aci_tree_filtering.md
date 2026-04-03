@@ -34,7 +34,7 @@ Agent-S narrows this to only the **foreground (focused) application**. This is a
 
 ## 🔹 Phase 3: Component Analysis
 
-**File**: `gui_agents/s1/aci/MacOSACI.py` — `get_state` (L210–217)
+**File**: `https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s1/aci/MacOSACI.py` — `get_state` (L210–217)
 ```python
 def get_state(self, obs):
     accessibility_tree = obs["accessibility_tree"]
@@ -48,7 +48,7 @@ def get_state(self, obs):
 - `AXFocusedApplication` is a macOS Accessibility API attribute that returns a reference to the currently active application
 - `UIElement(...)` wraps this reference for recursive traversal
 
-**File**: `gui_agents/s1/utils/common_utils.py` — `linearize_accessibility_tree` (L360–401)
+**File**: `https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s1/utils/common_utils.py` — `linearize_accessibility_tree` (L360–401)
 ```python
 def linearize_accessibility_tree(accessibility_tree, platform="ubuntu", tag=False):
     filtered_nodes = filter_nodes(ET.fromstring(accessibility_tree), platform)
@@ -68,7 +68,7 @@ def linearize_accessibility_tree(accessibility_tree, platform="ubuntu", tag=Fals
 
 ## 🔹 Phase 4: Code Evidence
 
-**File**: `gui_agents/s1/utils/common_utils.py` — `trim_accessibility_tree` (L787–793)
+**File**: `https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s1/utils/common_utils.py` — `trim_accessibility_tree` (L787–793)
 ```python
 def trim_accessibility_tree(linearized_accessibility_tree, max_tokens):
     tokens = enc.encode(linearized_accessibility_tree)
