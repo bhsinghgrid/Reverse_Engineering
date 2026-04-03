@@ -143,6 +143,33 @@ Worker: Executes "Navigate to Google Flights" → Returns DONE
 | Three-level | Very high | Very flexible | Very high |
 
 ---
+## 🧩 CLAIM: DAG-Based Task Decomposition
+Agent-S employs a **three-stage hierarchy** to decompose high-level user instructions into a linear execution queue, using a **Directed Acyclic Graph (DAG)** to manage subtask dependencies.
+
+### 🔬 EVIDENCE
+1.  **Stage 1: Step-by-Step Generation**
+    *   `Manager._generate_step_by_step_plan` ([Manager.py:L86](file:///Users/bhsingh/Documents/Project4/agent_s_analysis/Agent-S/gui_agents/s1/core/Manager.py#L86))
+    *   Uses the `MANAGER_PROMPT` to produce a natural language outline of required steps.
+2.  **Stage 2: Graph Translation**
+    *   `Manager._generate_dag` ([Manager.py:L193](file:///Users/bhsingh/Documents/Project4/agent_s_analysis/Agent-S/gui_agents/s1/core/Manager.py#L193))
+    *   Invokes a second LLM pass (`DAG_TRANSLATOR_PROMPT`) to convert the text plan into a structured `Dag` object.
+3.  **Stage 3: Topological Ordering**
+    *   `Manager._topological_sort` ([Manager.py:L228](file:///Users/bhsingh/Documents/Project4/agent_s_analysis/Agent-S/gui_agents/s1/core/Manager.py#L228))
+    *   Implements a standard **Depth-First Search (DFS)** algorithm ([Line 233](file:///Users/bhsingh/Documents/Project4/agent_s_analysis/Agent-S/gui_agents/s1/core/Manager.py#L233)) to order nodes such that all dependencies are satisfied before execution.
+
+### 🧠 INFERENCE
+By separating strategy (plan generation) from structure (DAG translation), Agent-S ensures that complex multi-step workflows (e.g., "Install app then configure settings") are executed in the correct causal order. The use of a DAG rather than a linear list allows the system to model parallel subtasks that eventually converge on a bottleneck step.
+
+---
+
+## 🧪 Counterfactual Reasoning & Alternative Designs
+
+### Why not use a simple Linear List?
+While simpler to implement, a linear list lacks **dependency awareness**. If a subtask fails, a linear agent must either skip it blindly or restart the entire task.
+*   **Agent-S Advantage**: The DAG structure allows the `Manager` to receive `failure_feedback` ([Manager.py:L151](file:///Users/bhsingh/Documents/Project4/agent_s_analysis/Agent-S/gui_agents/s1/core/Manager.py#L151)) and perform a **partial re-plan** while maintaining the state of independent, successful nodes.
+
+### Why not hit the LLM with a single prompt?
+Generating both the logic AND the grounding IDs in one pass often leads to "hallucinated" element IDs. Agent-S isolates the planning logic to the `Manager`, leaving the pixel-level execution to the `Worker`.
 
 ## ✅ Phase 7: Proof of Correctness
 
@@ -151,8 +178,10 @@ Worker: Executes "Navigate to Google Flights" → Returns DONE
 - **Theoretical Justification**: "Hierarchical Task Network (HTN) Planning" — a classical AI planning paradigm used in industrial robotics and game AI for multi-step goal decomposition
 
 ---
+## 📊 Confidence Level
+**High** — The 3-stage pipeline and DFS-based topological sort are explicitly documented and implemented in `gui_agents/s1/core/Manager.py`.
 
 ### ✅ Verification Status
 **Status:** VERIFIED PASS  
 **Proof:** [reverse_engineering_validation.md:L18](/docs/reverse_engineering_validation.md)  
-**Observation:** Confirmed in `Manager.py`. Uses DAG decomposition.
+**Observation:** Confirmed in `Manager.py`. Uses DAG decomposition with DFS ordering.
