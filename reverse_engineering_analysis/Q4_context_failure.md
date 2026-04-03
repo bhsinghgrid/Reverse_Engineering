@@ -112,3 +112,10 @@ Model sees:
 - **Code Evidence**: `del agent.messages[i]["content"][j]` is targeted specifically at `"image"` type content — text is never deleted in long-context mode
 - **Execution Evidence**: After 8+ turns with `max_trajectory_length=8`, only the last 8 screenshots remain visible to the model
 - **Theoretical Justification**: "Sliding Window Attention" — the principle that recent events are more predictive of current state than distant history, used in temporal sequence models
+
+---
+
+### ✅ Verification Status
+**Status:** VERIFIED PASS  
+**Proof:** [reverse_engineering_validation.md:L17](/docs/reverse_engineering_validation.md)  
+**Observation:** `flush_messages()` confirmed for image pruning.
