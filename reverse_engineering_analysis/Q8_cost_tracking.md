@@ -136,3 +136,10 @@ cost = input_tokens × ($0.005/1k) + output_tokens × ($0.015/1k)
 - **Code Evidence**: `goal_plan_cost`, `num_input_tokens_plan`, `num_output_tokens_plan` in `planner_info` dict — these are surfaced all the way to the evaluation harness, not just internal logs
 - **Design Evidence**: `"Agent that uses no hierarchy for less inference time"` in `agent_s.py:49` — the architectural rewrite is documented in the source code itself
 - **Theoretical Justification**: "CapEx-Driven Architecture" — identical to production ML engineering principle: optimize architecture based on cost-performance trade-offs measured empirically
+
+----
+
+### ✅ Verification Status
+**Status:** VERIFIED PASS  
+**Proof:** [reverse_engineering_validation.md:L21](/docs/reverse_engineering_validation.md)  
+**Observation:** Logic in `Manager.py` calculates pricing per turn.
