@@ -96,6 +96,23 @@ Raw AX Tree (80,000 nodes)
 ```
 
 ---
+## 🧩 CLAIM: Semantic & Spatial Pruning
+Agent-S uses aggressive **semantic-tag exclusion** and **spatial-visibility filtering** to reduce the token noise of the Accessibility Tree before it is passed to the LLM.
+
+### 🔬 EVIDENCE
+1.  **Exact Filtering Function**
+    *   `LinuxACI.filter_nodes` ([LinuxOSACI.py:L140](https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s1/aci/LinuxOSACI.py#L140)).
+2.  **Semantic Exclusion List**
+    *   The system explicitly removes structure-only elements: `["panel", "window", "filler", "frame", "separator", "scroll-bar"]` ([L144](https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s1/aci/LinuxOSACI.py#L144)).
+3.  **Visibility Gating**
+    *   Nodes are only preserved if they have an active `showing == "true"` attribute ([L159](https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s1/aci/LinuxOSACI.py#L159)) and valid screen coordinates `(x >= 0, y >= 0)` ([L166](https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s1/aci/LinuxOSACI.py#L166)).
+4.  **Active App Isolation**
+    *   `linearize_and_annotate_tree` ([L314-316](https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s1/aci/LinuxOSACI.py#L314-316)) removes applications that are not in the `to_keep` (active) list.
+
+### 🧠 INFERENCE
+By pruning structural "filler" nodes and focusing exclusively on elements that are both visible and interactable within the active application, Agent-S significantly reduces context window bloat and minimizes the risk of the LLM attending to irrelevant background elements.
+
+---
 
 ## 🔹 Phase 5: Architecture Diagram
 
@@ -137,8 +154,19 @@ LLM Context Window (ready for model input)
 - **Theoretical Justification**: Matches the "Selective Attention" principle — the human brain also suppresses irrelevant visual information when performing a focused task
 
 ---
+## 🧪 Counterfactual Reasoning & Alternative Designs
+
+### Why not send the full XML tree?
+A raw Accessibility Tree for a modern OS can exceed 100k tokens, which is both expensive and likely to cause attention drift in the reasoner.
+*   **Agent-S Advantage**: Pruning to ~20-50 high-value items allows the model to "focus" on the core UI interactors.
+
+---
+
+## 📊 Confidence Level
+**High** — The exclusion list and visibility checks are explicitly defined in the `LinuxACI` implementation.
+---
 
 ### ✅ Verification Status
 **Status:** VERIFIED PASS  
 **Proof:** [reverse_engineering_validation.md:L15](/docs/reverse_engineering_validation.md)  
-**Observation:** Confirmed tree pruning in `LinuxOSACI.py`.
+**Observation:** `filter_nodes` behavior confirmed for tag exclusion.
