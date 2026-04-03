@@ -149,8 +149,3 @@ Turn 1+:
   - Combined, they enable "expert-level adaptive behavior" — the same dual system used in human skill acquisition
 
 ---
-
-### ✅ Verification Status
-**Status:** VERIFIED PASS  
-**Proof:** [reverse_engineering_validation.md:L23](/docs/reverse_engineering_validation.md)  
-**Observation:** Procedural and Episodic memory proven to co-exist in Turn 0.
