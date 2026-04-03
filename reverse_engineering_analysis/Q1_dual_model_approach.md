@@ -39,7 +39,7 @@ These roles fail in opposite ways. A general LMM tends to **hallucinate pixel co
 
 ## 🔹 Phase 3: Component Analysis
 
-**File**: `gui_agents/s3/agents/grounding.py` — `OSWorldACI.__init__` (L179–226)
+**File**: `https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s3/agents/grounding.py` — `OSWorldACI.__init__` (L179–226)
 
 ```python
 class OSWorldACI(ACI):
@@ -60,7 +60,7 @@ class OSWorldACI(ACI):
 
 ## 🔹 Phase 4: Code Evidence
 
-**File**: `gui_agents/s3/agents/grounding.py` — `generate_coords` (L229–245)
+**File**: `https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s3/agents/grounding.py` — `generate_coords` (L229–245)
 ```python
 def generate_coords(self, ref_expr: str, obs: Dict) -> List[int]:
     self.grounding_model.reset()
@@ -83,7 +83,7 @@ def generate_coords(self, ref_expr: str, obs: Dict) -> List[int]:
 | `re.findall(r"\d+", response)` | Extracts raw integer coordinate values from the model's text response |
 | `return [int(numericals[0]), int(numericals[1])]` | Returns `[x, y]` for PyAutoGUI execution |
 
-**File**: `gui_agents/s3/agents/worker.py` — L330
+**File**: `https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s3/agents/worker.py` — L330
 ```python
 exec_code = create_pyautogui_code(self.grounding_agent, plan_code, obs)
 ```
