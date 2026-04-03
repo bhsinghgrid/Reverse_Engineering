@@ -39,7 +39,7 @@ It simply adds a text prefix like: `"REFLECTION: You are repeating the same clic
 
 ## 🔹 Phase 3: Component Analysis
 
-**Reflection Prompt** (`procedural_memory.py:126–151`):
+**Reflection Prompt** (`https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s1/core/ProceduralMemory.py:126–151`):
 ```python
 REFLECTION_ON_TRAJECTORY = textwrap.dedent("""
     You are an expert computer use agent designed to reflect on the trajectory.
@@ -57,7 +57,7 @@ REFLECTION_ON_TRAJECTORY = textwrap.dedent("""
 """)
 ```
 
-**File**: `gui_agents/s3/agents/worker.py` — `_generate_reflection` (L125–178)
+**File**: `https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s3/agents/worker.py` — `_generate_reflection` (L125–178)
 ```python
 def _generate_reflection(self, instruction, obs):
     if self.enable_reflection:
