@@ -1,0 +1,14 @@
+gui_agents/s3/memory/procedural_memory.py:57:        - **CRITICAL**: Files modified by code agent may not show changes in currently open applications - you MUST close and reopen the entire application. Reloading the page/file is insufficient.
+gui_agents/s3/memory/procedural_memory.py:63:        - After opening or reopening applications, wait at least 3 seconds for full loading.
+gui_agents/s3/memory/procedural_memory.py:366:    The agent must fully complete user requests, following flows to the end to save the user time.
+gui_agents/s3/bbon/behavior_narrator.py:39:        font = ImageFont.load_default(25)
+gui_agents/s3/bbon/behavior_narrator.py:194:        before_img.save(out_buffer, format="PNG")
+gui_agents/s3/bbon/comparative_judge.py:58:        print(f"Error loading image {image_path}: {e}")
+gui_agents/s3/agents/grounding.py:52:import unicodedata, json
+gui_agents/s3/agents/grounding.py:71:            # json.loads handles all the escape forms safely
+gui_agents/s3/agents/grounding.py:72:            s = json.loads(f"{{s}}")
+gui_agents/s3/agents/grounding.py:202:        # Maintain state for save_to_knowledge
+gui_agents/s3/agents/grounding.py:465:    def save_to_knowledge(self, text: List[str]):
+gui_agents/s3/agents/grounding.py:468:            text:List[str] the text to save to the knowledge
+gui_agents/s3/utils/common_utils.py:196:    image.save(output, format="WEBP")
+gui_agents/s3/cli_app.py:170:        screenshot.save(buffered, format="PNG")

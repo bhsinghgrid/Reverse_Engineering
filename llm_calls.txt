@@ -1,0 +1,9 @@
+16:        worker_engine_params: Dict,
+23:            worker_engine_params: Configuration parameters for the worker LLM agent
+27:        self.worker_engine_params = worker_engine_params
+36:        """Generate next action prediction
+53:        worker_engine_params: Dict,
+62:            worker_engine_params: Configuration parameters for the worker agent.
+69:        super().__init__(worker_engine_params, grounding_agent, platform)
+78:            worker_engine_params=self.worker_engine_params,
+87:        executor_info, actions = self.executor.generate_next_action(

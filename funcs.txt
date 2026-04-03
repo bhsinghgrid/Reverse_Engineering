@@ -1,0 +1,6 @@
+14:    def __init__(
+31:    def reset(self) -> None:
+35:    def predict(self, instruction: str, observation: Dict) -> Tuple[Dict, List[str]]:
+51:    def __init__(
+75:    def reset(self) -> None:
+85:    def predict(self, instruction: str, observation: Dict) -> Tuple[Dict, List[str]]:

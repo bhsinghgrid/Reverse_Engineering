@@ -1,0 +1,21 @@
+    entry_points={
+        "console_scripts": [
+            "agent_s=gui_agents.s3.cli_app:main",
+        ],
+    },
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.9",
+        "License :: OSI Approved :: Apache Software License",
+        "Operating System :: Microsoft :: Windows",
+        "Operating System :: POSIX :: Linux",
+        "Operating System :: MacOS :: MacOS X",
+        "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    ],
+    keywords="ai, llm, gui, agent, multimodal",
+    project_urls={
+        "Source": "https://github.com/simular-ai/Agent-S",
+        "Bug Reports": "https://github.com/simular-ai/Agent-S/issues",
+    },
+    python_requires=">=3.9, <=3.12",
+)

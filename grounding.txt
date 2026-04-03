@@ -1,0 +1,28 @@
+20:    def __init__(self):
+25:def agent_action(func):
+54:def identify_document_type(component):
+66:def _norm_name(s: str | None) -> str | None:
+82:def cell_ref_to_indices(cell_ref):
+90:def set_cell_values(new_cell_values: dict[str, str], app_name: str = "Untitled 1", sheet_name: str = "Sheet1"):
+180:    def __init__(
+229:    def generate_coords(self, ref_expr: str, obs: Dict) -> List[int]:
+248:    def get_ocr_elements(self, b64_image_data: str) -> Tuple[str, List]:
+285:    def generate_text_coords(
+328:    def assign_screenshot(self, obs: Dict):
+331:    def set_task_instruction(self, task_instruction: str):
+336:    def resize_coordinates(self, coordinates: List[int]) -> List[int]:
+346:    def click(
+374:    def switch_applications(self, app_code):
+391:    def open(self, app_or_filename: str):
+413:    def type(
+465:    def save_to_knowledge(self, text: List[str]):
+474:    def drag_and_drop(
+503:    def highlight_text_span(
+527:    def set_cell_values(
+542:    def call_code_agent(self, task: str = None):
+605:    def scroll(self, element_description: str, clicks: int, shift: bool = False):
+621:    def hotkey(self, keys: List):
+631:    def hold_and_press(self, hold_keys: List, press_keys: List):
+649:    def wait(self, time: float):
+657:    def done(
+664:    def fail(self):

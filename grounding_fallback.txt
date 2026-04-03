@@ -1,0 +1,3 @@
+74:            # fallback: best-effort
+649:    def wait(self, time: float):
+652:            time:float the amount of time to wait in seconds

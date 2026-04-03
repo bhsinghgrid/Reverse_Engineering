@@ -1,0 +1,42 @@
+# Task: Provide Architecture Overview of Agent-S
+
+- [x] Research Core Components (gui_agents/s3)
+    - [x] Analyze `AgentS3` and `OSWorldACI` (agents/)
+    - [x] Investigate Grounding logic (agents/grounding.py)
+    - [x] Explore Memory and Retrieval (memory/)
+    - [x] Understand Reflection mechanism
+    - [x] Examine Local Environment execution (utils/local_env.py)
+- [x] Understand Action Pipeline
+    - [x] Trace `predict` method in `AgentS3`
+    - [x] Understand how observations are processed
+    - [x] Analyze action generation and grounding
+- [x] Document Architecture in Artifacts
+    - [x] Create `implementation_plan.md`
+    - [x] Create `architecture_overview.md`
+    - [x] Include diagrams (Mermaid) for key flows
+- [x] Final Review and Presentation
+    - [x] Present the architecture to the user
+- [x] Setup and Execution
+    - [x] Environment Execution Demo
+    - [x] Create `complex_task_demo.py`
+    - [x] Update `setup_guide.md` for local code execution requirements
+    - [x] Prepare user instructions for final run
+- [x] Prompt Analysis & Optimization
+    - [x] List and read all prompt files (`.txt` and `procedural_memory.py`)
+    - [x] Analyze the structure and effectiveness of each major prompt
+    - [x] Create `prompt_analysis_report.md`
+    - [x] Propose optimizations for clarity, instruction following, and model-specific tuning
+- [x] Code Logic Analysis
+    - [x] Trace `AgentS3` to `Worker` interaction
+    - [x] Analyze the `Worker.generate_next_action` loop
+    - [x] Detail the `CodeAgent` iterative execution logic
+    - [x] Map the `OSWorldACI` grounding and coordinate transformation pipeline
+    - [x] Create `code_logic_deep_dive.md`
+- [x] Dual-Model Architecture Analysis
+    - [x] Explain the "Reasoning vs. Grounding" separation
+    - [x] Detail the `OSWorldACI` implementation wrapper
+    - [x] Analyze the benefits for local model deployment (Ollama)
+- [x] Hierarchical Planning Analysis
+    - [x] Explain the "Manager-Worker" decomposition logic
+    - [x] Analyze why a two-level hierarchy is optimal
+    - [x] Create `hierarchical_planning_logic.md`

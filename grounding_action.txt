@@ -1,0 +1,60 @@
+32:import pyautogui;
+33:pyautogui.press('escape');
+54:def identify_document_type(component):
+136:        doc_type = identify_document_type(component)
+137:        documents.append((i, component, title, doc_type))
+169:                raise ValueError(f"Unsupported cell value type: {{type(value)}}")
+250:        image_data = pytesseract.image_to_data(image, output_type=Output.DICT)
+346:    def click(
+349:        num_clicks: int = 1,
+350:        button_type: str = "left",
+355:            element_description:str, a detailed descriptions of which element to click on. This description should be at least a full sentence.
+356:            num_clicks:int, number of times to click the element
+357:            button_type:str, which mouse button to press can be "left", "middle", or "right"
+358:            hold_keys:List, list of keys to hold while clicking
+362:        command = "import pyautogui; "
+366:            command += f"pyautogui.keyDown({repr(k)}); "
+367:        command += f"""import pyautogui; pyautogui.click({x}, {y}, clicks={num_clicks}, button={repr(button_type)}); """
+369:            command += f"pyautogui.keyUp({repr(k)}); "
+370:        # Return pyautoguicode to click on the element
+380:            return f"import pyautogui; import time; pyautogui.hotkey('command', 'space', interval=0.5); pyautogui.typewrite({repr(app_code)}); pyautogui.press('enter'); time.sleep(1.0)"
+384:            return f"import pyautogui; import time; pyautogui.hotkey('win', 'd', interval=0.5); pyautogui.typewrite({repr(app_code)}); pyautogui.press('enter'); time.sleep(1.0)"
+397:            return f"import pyautogui; pyautogui.hotkey('win'); time.sleep(0.5); pyautogui.write({repr(app_or_filename)}); time.sleep(1.0); pyautogui.hotkey('enter'); time.sleep(0.5)"
+399:            return f"import pyautogui; import time; pyautogui.hotkey('command', 'space', interval=0.5); pyautogui.typewrite({repr(app_or_filename)}); pyautogui.press('enter'); time.sleep(1.0)"
+402:                "import pyautogui; import time; "
+403:                "pyautogui.hotkey('win'); time.sleep(0.5); "
+404:                f"pyautogui.write({repr(app_or_filename)}); time.sleep(1.0); "
+405:                "pyautogui.press('enter'); time.sleep(0.5)"
+413:    def type(
+423:            text:str, the text to type
+427:        command = "import pyautogui; "
+441:            command += f"pyautogui.click({x}, {y}); "
+445:                f"pyautogui.hotkey({repr('command' if self.platform == 'darwin' else 'ctrl')}, 'a'); "
+446:                "pyautogui.press('backspace'); "
+449:        # Check if text contains Unicode characters that pyautogui.write() can't handle
+455:            command += f"pyautogui.hotkey({repr('command' if self.platform == 'darwin' else 'ctrl')}, 'v'); "
+457:            # Use regular pyautogui.write() for ASCII text
+458:            command += f"pyautogui.write({repr(text)}); "
+461:            command += "pyautogui.press('enter'); "
+488:        command = "import pyautogui; "
+490:        command += f"pyautogui.moveTo({x1}, {y1}); "
+493:            command += f"pyautogui.keyDown({repr(k)}); "
+494:        command += f"pyautogui.dragTo({x2}, {y2}, duration=1., button='left'); pyautogui.mouseUp(); "
+496:            command += f"pyautogui.keyUp({repr(k)}); "
+498:        # Return pyautoguicode to drag and drop the elements
+519:        command = "import pyautogui; "
+520:        command += f"pyautogui.moveTo({x1}, {y1}); "
+521:        command += f"pyautogui.dragTo({x2}, {y2}, duration=1., button='{button}'); pyautogui.mouseUp(); "
+523:        # Return pyautoguicode to drag and drop the elements
+533:                Supported value types include: float, int, string, bool, formulas.
+605:    def scroll(self, element_description: str, clicks: int, shift: bool = False):
+608:            element_description:str, a very detailed description of which element to enter scroll in. This description should be at least a full sentence.
+609:            clicks:int, the number of clicks to scroll can be positive (up) or negative (down).
+610:            shift:bool, whether to use shift+scroll for horizontal scrolling
+616:            return f"import pyautogui; import time; pyautogui.moveTo({x}, {y}); time.sleep(0.5); pyautogui.hscroll({clicks})"
+618:            return f"import pyautogui; import time; pyautogui.moveTo({x}, {y}); time.sleep(0.5); pyautogui.vscroll({clicks})"
+628:        return f"import pyautogui; pyautogui.hotkey({', '.join(keys)})"
+639:        command = "import pyautogui; "
+641:            command += f"pyautogui.keyDown({repr(k)}); "
+642:        command += f"pyautogui.press({press_keys_str}); "
+644:            command += f"pyautogui.keyUp({repr(k)}); "
