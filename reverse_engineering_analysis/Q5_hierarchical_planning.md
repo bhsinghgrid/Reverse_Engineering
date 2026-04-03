@@ -149,3 +149,10 @@ Worker: Executes "Navigate to Google Flights" → Returns DONE
 - **Code Evidence**: `_topological_sort` implements a standard DFS-based algorithm — nodes with no dependencies execute first
 - **Failure Recovery**: `get_action_queue(failed_subtask=...)` is called by `AgentS2` whenever Worker returns `FAIL`, triggering a partial replan
 - **Theoretical Justification**: "Hierarchical Task Network (HTN) Planning" — a classical AI planning paradigm used in industrial robotics and game AI for multi-step goal decomposition
+
+---
+
+### ✅ Verification Status
+**Status:** VERIFIED PASS  
+**Proof:** [reverse_engineering_validation.md:L18](/docs/reverse_engineering_validation.md)  
+**Observation:** Confirmed in `Manager.py`. Uses DAG decomposition.
