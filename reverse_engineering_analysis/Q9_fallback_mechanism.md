@@ -35,7 +35,7 @@ This turns failures into **harmless no-ops** that allow the episode to recover.
 
 ## 🔹 Phase 3: Component Analysis
 
-**File**: `gui_agents/s3/agents/worker.py` — `generate_next_action` (L327–337)
+**File**: `https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s3/agents/worker.py` — `generate_next_action` (L327–337)
 ```python
 plan_code = parse_code_from_string(plan)
 try:
@@ -48,7 +48,7 @@ except Exception as e:
     exec_code = self.grounding_agent.wait(1.333)
 ```
 
-**The `wait` action** (`grounding.py:648–654`):
+**The `wait` action** (`https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s2_5/agents/grounding.py:648–654`):
 ```python
 @agent_action
 def wait(self, time: float):
