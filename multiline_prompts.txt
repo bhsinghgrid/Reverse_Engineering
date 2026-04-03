@@ -1,0 +1,10 @@
+gui_agents/s3/agents/agent_s.py:12:    """Base class for UI automation agents"""
+gui_agents/s3/agents/agent_s.py:20:        """Initialize UIAgent
+gui_agents/s3/agents/agent_s.py:26:        """
+gui_agents/s3/agents/agent_s.py:32:        """Reset agent state"""
+gui_agents/s3/agents/agent_s.py:36:        """Generate next action prediction
+gui_agents/s3/agents/agent_s.py:44:        """
+gui_agents/s3/agents/agent_s.py:49:    """Agent that uses no hierarchy for less inference time"""
+gui_agents/s3/agents/agent_s.py:59:        """Initialize a minimalist AgentS2 without hierarchy
+gui_agents/s3/agents/agent_s.py:67:        """
+gui_agents/s3/agents/agent_s.py:76:        """Reset agent state and initialize components"""

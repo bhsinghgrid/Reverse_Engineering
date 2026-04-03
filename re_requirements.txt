@@ -1,0 +1,10 @@
+ipython            # interactive Python shell
+jupyter            # notebook for documenting findings
+objgraph           # visualize Python object graphs
+memory_profiler    # track memory usage per line
+line_profiler      # track time usage per line
+py-spy           # sampling profiler (no code changes needed)
+viztracer         # execution timeline visualizer
+pydeps             # dependency graph generator
+rich             # pretty print objects in terminal
+icecream            # better than print() for debugging
