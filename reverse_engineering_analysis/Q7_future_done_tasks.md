@@ -38,7 +38,7 @@ These lists are passed **by reference** to every `Worker.generate_next_action()`
 
 ## 🔹 Phase 3: Component Analysis
 
-**File**: `gui_agents/s2/agents/worker.py` — `generate_next_action` (L148–155)
+**File**: `https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s2/agents/worker.py` — `generate_next_action` (L148–155)
 ```python
 # Inject global DAG state into the Worker's system prompt at Turn 0
 if self.turn_count == 0:
@@ -51,7 +51,7 @@ if self.turn_count == 0:
     )
 ```
 
-**File**: `gui_agents/s2/agents/worker.py` — subtask constraints (L199–201)
+**File**: `https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s2/agents/worker.py` — subtask constraints (L199–201)
 ```python
 if self.turn_count == 0:
     generator_message += f"Remember only complete the subtask: {subtask}\n"
@@ -62,7 +62,7 @@ if self.turn_count == 0:
 
 ## 🔹 Phase 4: Code Evidence
 
-**File**: `gui_agents/s2/agents/agent_s.py` — DAG queue management (conceptual)
+**File**: `https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s2/agents/agent_s.py` — DAG queue management (conceptual)
 ```python
 # AgentS2 maintains the task queue
 self.subtasks = action_queue           # Pending tasks
