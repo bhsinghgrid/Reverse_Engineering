@@ -166,7 +166,3 @@ A raw Accessibility Tree for a modern OS can exceed 100k tokens, which is both e
 **High** — The exclusion list and visibility checks are explicitly defined in the `LinuxACI` implementation.
 ---
 
-### ✅ Verification Status
-**Status:** VERIFIED PASS  
-**Proof:** [reverse_engineering_validation.md:L15](/docs/reverse_engineering_validation.md)  
-**Observation:** `filter_nodes` behavior confirmed for tag exclusion.
