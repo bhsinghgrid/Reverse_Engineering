@@ -139,5 +139,5 @@ Response: "542 891"
 
 ### ✅ Verification Status
 **Status:** VERIFIED PASS  
-**Proof:** [reverse_engineering_validation.md:L14](file:///Users/bhsingh/Documents/Project4/agent_s_analysis/Agent-S/docs/reverse_engineering_validation.md#L14)  
+**Proof:** [reverse_engineering_validation.md:L14](/docs/reverse_engineering_validation.md)  
 **Observation:** Dual LLM engines confirmed in `grounding.py`.
