@@ -39,7 +39,7 @@ The Worker then executes its assigned subtask **step-by-step**, returning `DONE`
 
 ## 🔹 Phase 3: Component Analysis
 
-**File**: `gui_agents/s2/agents/manager.py` — `get_action_queue` (L305–321)
+**File**: `https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s2/agents/manager.py` — `get_action_queue` (L305–321)
 ```python
 def get_action_queue(self, instruction, observation,
                      failed_subtask=None,
@@ -148,14 +148,14 @@ Agent-S employs a **three-stage hierarchy** to decompose high-level user instruc
 
 ### 🔬 EVIDENCE
 1.  **Stage 1: Step-by-Step Generation**
-    *   `Manager._generate_step_by_step_plan` ([Manager.py:L86](file:///Users/bhsingh/Documents/Project4/agent_s_analysis/Agent-S/gui_agents/s1/core/Manager.py#L86))
+    *   `Manager._generate_step_by_step_plan` ([Manager.py:L86](https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s1/core/Manager.py#L86))
     *   Uses the `MANAGER_PROMPT` to produce a natural language outline of required steps.
 2.  **Stage 2: Graph Translation**
-    *   `Manager._generate_dag` ([Manager.py:L193](file:///Users/bhsingh/Documents/Project4/agent_s_analysis/Agent-S/gui_agents/s1/core/Manager.py#L193))
+    *   `Manager._generate_dag` ([Manager.py:L193](https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s1/core/Manager.py#L193))
     *   Invokes a second LLM pass (`DAG_TRANSLATOR_PROMPT`) to convert the text plan into a structured `Dag` object.
 3.  **Stage 3: Topological Ordering**
-    *   `Manager._topological_sort` ([Manager.py:L228](file:///Users/bhsingh/Documents/Project4/agent_s_analysis/Agent-S/gui_agents/s1/core/Manager.py#L228))
-    *   Implements a standard **Depth-First Search (DFS)** algorithm ([Line 233](file:///Users/bhsingh/Documents/Project4/agent_s_analysis/Agent-S/gui_agents/s1/core/Manager.py#L233)) to order nodes such that all dependencies are satisfied before execution.
+    *   `Manager._topological_sort` ([Manager.py:L228](https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s1/core/Manager.py#L228))
+    *   Implements a standard **Depth-First Search (DFS)** algorithm ([Line 233](https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s1/core/Manager.py#L233)) to order nodes such that all dependencies are satisfied before execution.
 
 ### 🧠 INFERENCE
 By separating strategy (plan generation) from structure (DAG translation), Agent-S ensures that complex multi-step workflows (e.g., "Install app then configure settings") are executed in the correct causal order. The use of a DAG rather than a linear list allows the system to model parallel subtasks that eventually converge on a bottleneck step.
@@ -166,7 +166,7 @@ By separating strategy (plan generation) from structure (DAG translation), Agent
 
 ### Why not use a simple Linear List?
 While simpler to implement, a linear list lacks **dependency awareness**. If a subtask fails, a linear agent must either skip it blindly or restart the entire task.
-*   **Agent-S Advantage**: The DAG structure allows the `Manager` to receive `failure_feedback` ([Manager.py:L151](file:///Users/bhsingh/Documents/Project4/agent_s_analysis/Agent-S/gui_agents/s1/core/Manager.py#L151)) and perform a **partial re-plan** while maintaining the state of independent, successful nodes.
+*   **Agent-S Advantage**: The DAG structure allows the `Manager` to receive `failure_feedback` ([Manager.py:L151](https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s1/core/Manager.py#L151)) and perform a **partial re-plan** while maintaining the state of independent, successful nodes.
 
 ### Why not hit the LLM with a single prompt?
 Generating both the logic AND the grounding IDs in one pass often leads to "hallucinated" element IDs. Agent-S isolates the planning logic to the `Manager`, leaving the pixel-level execution to the `Worker`.
