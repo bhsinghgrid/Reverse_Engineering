@@ -109,8 +109,8 @@ Agent-S/
 │       │   └── grounding.py        # ACI + wait fallback
 │       └── memory/
 │           └── procedural_memory.py  # Dynamic system prompt builder
-├── run_test.py                     # Local test harness
-└── mock_llm.py                     # Offline mock LLM
+├── run_test.py                     # Local test harness  by user
+└── mock_llm.py                     # Offline mock LLM   by user
 ```
 
 ![Agent-S Package Dependencies](/image/packages.svg)
@@ -179,7 +179,7 @@ Each question below was answered using the **7-phase RE methodology**. The RE te
 | # | Design Question | RE Technique Used | Analysis |
 |---|---|---|---|
 | **Q1** | Why is the dual-model approach critical? | *Differential analysis* + *Call graph tracing* | [→ Q1](/reverse_engineering_analysis/Q1_dual_model_approach.md) |
-| **Q2** | Why does ACI remove inactive apps from the AX tree? | *Data flow analysis* + *Pattern search* | [→ Q2](/reverse_engineering_analysis/Q2_inactive_apps_filtering.md) |
+| **Q2** | Why does ACI remove inactive apps from the AX tree? | *Data flow analysis* + *Pattern search* | [→ Q2](/reverse_engineering_analysis/Q2_aci_tree_filtering.md) |
 | **Q3** | Why is episodic memory limited to Turn 0? | *Control flow analysis* + *Assertion tracing* | [→ Q3](/reverse_engineering_analysis/Q3_episodic_memory_turn0.md) |
 | **Q4** | Why does full context fail despite large windows? | *Static code inspection* + *Runtime log analysis* | [→ Q4](/reverse_engineering_analysis//Q4_context_failure.md) |
 | **Q5** | How does the Manager-Worker DAG decompose tasks? | *Class hierarchy inspection* + *Algorithm tracing* | [→ Q5](/reverse_engineering_analysis/Q5_hierarchical_planning.md) |
