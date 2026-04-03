@@ -308,7 +308,7 @@ flowchart TD
 **RE Technique**: *Comparative Differential Analysis + Docstring Tracing*
 
 ```python
-# s3/agents/agent_s.py:49
+# https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s3/agents/agent_s.py:49
 class AgentS3(UIAgent):
     """Agent that uses no hierarchy for less inference time"""
 ```
@@ -487,7 +487,6 @@ The findings in this report have been formally validated against the technical l
 
 ### 5.1 Technical Validation Log
 Every architectural claim has been cross-referenced with the source code tracing results documented in the internal validation suite.
-- **Full Validation Record**: [reverse_engineering_validation.md](/docs/reverse_engineering_validation.md)
 
 | Category | Status | Verification Note |
 |---|---|---|
