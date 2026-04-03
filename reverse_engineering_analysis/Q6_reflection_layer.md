@@ -147,3 +147,10 @@ Turn T-1: Screenshot + Last Action
 - **System Prompt Evidence**: Cases 1/2/3 are strictly defined in `REFLECTION_ON_TRAJECTORY` — the model cannot invent new case types
 - **Execution Pattern**: `self.reflections.append(reflection)` builds a log of all critiques per task, useful for debugging stuck episodes
 - **Theoretical Justification**: "Metacognitive Monitoring" from cognitive science — a separate evaluative process that observes and critiques ongoing primary behavior, without interrupting it directly
+
+---
+
+### ✅ Verification Status
+**Status:** VERIFIED PASS  
+**Proof:** [reverse_engineering_validation.md:L19](/docs/reverse_engineering_validation.md)  
+**Observation:** `ReflectionAgent` critiques the trajectory before every planning turn.
