@@ -35,7 +35,7 @@ Every turn produces a new screenshot. An old screenshot from Turn 3 shows a menu
 
 ## 🔹 Phase 3: Component Analysis
 
-**File**: `gui_agents/s3/agents/worker.py` — `flush_messages` (L90–123)
+**File**: `https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s3/agents/worker.py` — `flush_messages` (L90–123)
 ```python
 def flush_messages(self):
     engine_type = self.engine_params.get("engine_type", "")
@@ -68,7 +68,7 @@ def flush_messages(self):
 | OpenAI / Anthropic / Gemini | Delete old images only | Text history is cheap and useful; images are semantically stale |
 | Small models (vLLM, HuggingFace) | Drop full turn pairs | Cannot afford long history; must delete both text and images |
 
-**File**: `gui_agents/s1/utils/common_utils.py` — ID invalidation comment
+**File**: `https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s1/utils/common_utils.py` — ID invalidation comment
 ```python
 def parse_action_from_fixed_code(action_string, linearized_accessibility_tree):
     # element_id is an integer index into the AX tree
