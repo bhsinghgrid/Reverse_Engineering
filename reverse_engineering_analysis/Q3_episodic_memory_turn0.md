@@ -35,7 +35,7 @@ However, this retrieval is **strictly gated to `turn_count == 0`**. After the fi
 
 ## 🔹 Phase 3: Component Analysis
 
-**File**: `gui_agents/s2/agents/worker.py` — `generate_next_action` (L115–146)
+**File**: `https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s2/agents/worker.py` — `generate_next_action` (L115–146)
 ```python
 if self.turn_count == 0:
     if self.use_subtask_experience:
@@ -52,7 +52,7 @@ if self.turn_count == 0:
         )
 ```
 
-**File**: `gui_agents/s2/core/knowledge.py` — `retrieve_episodic_experience` (L198–210)
+**File**: `https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s2/core/knowledge.py` — `retrieve_episodic_experience` (L198–210)
 ```python
 def retrieve_episodic_experience(self, instruction: str) -> Tuple[str, str]:
     knowledge_base = load_knowledge_base(self.episodic_memory_path)
@@ -67,7 +67,7 @@ def retrieve_episodic_experience(self, instruction: str) -> Tuple[str, str]:
 
 ## 🔹 Phase 4: Code Evidence
 
-**File**: `gui_agents/s2/core/knowledge.py` — `save_episodic_memory` (L262–282)
+**File**: `https://github.com/simular-ai/Agent-S/blob/main/gui_agents/s2/core/knowledge.py` — `save_episodic_memory` (L262–282)
 ```python
 def save_episodic_memory(self, subtask_key: str, subtask_traj: str) -> None:
     """Save episodic memory (subtask level knowledge)."""
